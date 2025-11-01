@@ -1,0 +1,37 @@
+/* Make footer stick to the bottom */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.hero {
+  background: url('../images/burners/hero.jpg') center/cover no-repeat;
+  height: 90vh;
+}
+
+.hero .container {
+  background: rgba(0,0,0,0.5);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
