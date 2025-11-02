@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thermotechnik Systeme | Industrial Burners & Controls</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+
   <style>
+    /* Topbar */
     .topbar {
       background-color: #bcbcbc;
       color: #000;
@@ -21,62 +23,215 @@
       text-decoration: underline;
     }
 
+    /* Navbar */
+    .navbar {
+      background-color: #111 !important;
+    }
+    .navbar-nav .nav-link {
+      color: #ddd !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #d4af37 !important;
+    }
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
     /* WhatsApp Button */
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    background-color: #25D366;
-    border-radius: 50%;
-    padding: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+    .whatsapp-float {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background-color: #25D366;
+      border-radius: 50%;
+      padding: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+    }
+    .whatsapp-icon {
+      width: 40px;
+      height: 40px;
+    }
 
-  .whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
-  }
+    /* Banner Slider */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f9fafb;
+    }
 
-  .whatsapp-icon {
-    width: 40px;
-    height: 40px;
-  }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      z-index: 2;
+    }
+
+    .slide.prev {
+      transform: translateX(-100%);
+    }
+
+    .slide-content {
+      flex: 1;
+      color: #111;
+      max-width: 500px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-in-out;
+    }
+
+    .slide.active .slide-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .slide-content p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .btn-custom {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      margin-top: 25px;
+      text-decoration: none;
+    }
+
+    .btn-custom:hover {
+      background: linear-gradient(135deg, #b8860b, #d4af37);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    .slide-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-image img {
+      width: 100%;
+      max-width: 550px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Arrows */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      font-size: 2rem;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s;
+      z-index: 10;
+    }
+    .arrow:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    .arrow.left {
+      left: 30px;
+    }
+    .arrow.right {
+      right: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 992px) {
+      .slide {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+      }
+      .slide-image img {
+        max-width: 400px;
+        margin-top: 20px;
+      }
+      .arrow {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Top Bar -->
   <div class="topbar">
     <div class="container d-flex justify-content-between align-items-center flex-wrap">
-      <div>
-        📞 <a href="tel:+919566103943">+91 95661 03943</a>
-      </div>
-      <div>
-        ✉️ <a href="mailto:xyz@thermotechnik.com">xyz@thermotechnik.com</a>
-      </div>
+      <div>📞 <a href="tel:+919566103943">+91 95661 03943</a></div>
+      <div>✉️ <a href="mailto:xyz@thermotechnik.com">xyz@thermotechnik.com</a></div>
     </div>
   </div>
 
-  <!-- ✅ Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand fw-semibold" href="index.html">Thermotechnik Systeme</a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
@@ -86,35 +241,79 @@
     </div>
   </nav>
 
-
-
-  <!-- Hero -->
-  <section class="hero d-flex align-items-center text-center text-white">
-    <div class="container">
-      <h1 class="display-4">Reliable. Efficient. Industrial Burners.</h1>
-      <p class="lead">Manufacturer of Industrial Burners, Gas Pipelines & Burner Controllers in Chennai.</p>
-      <a href="products.html" class="btn btn-warning btn-lg mt-3">Explore Products</a>
+  <!-- Hero Slider -->
+  <section class="hero-section">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <div class="slide-content">
+        <h1>Welcome to Thermotechnik Systeme</h1>
+        <p>Leading manufacturer of industrial burners, gas pipelines, and burner controllers in Chennai.</p>
+        <a href="products.html" class="btn-custom">Our Products</a>
+      </div>
+      <div class="slide-image">
+        <img src="images/burner1.png" alt="Industrial Burner">
+      </div>
     </div>
-  </section>
-  <!-- WhatsApp Floating Button -->
-<a href="https://api.whatsapp.com/send/?phone=919566103943&text&type=phone_number&app_absent=0" 
-   class="whatsapp-float" 
-   target="_blank" 
-   aria-label="Chat on WhatsApp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-       alt="WhatsApp Chat" 
-       class="whatsapp-icon">
-</a>
 
-  
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="slide-content">
+        <h1>Reliable, Efficient & Sustainable Combustion</h1>
+        <p>We provide energy-efficient solutions using Riello Burners, Dungs Valves, and Siemens Controllers.</p>
+        <a href="products.html" class="btn-custom">Our Products</a>
+      </div>
+      <div class="slide-image">
+        <img src="images/burner2.png" alt="Gas Burner">
+      </div>
+    </div>
+
+    <!-- Arrows -->
+    <button class="arrow left" id="prev">&#10094;</button>
+    <button class="arrow right" id="next">&#10095;</button>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://api.whatsapp.com/send/?phone=919566103943&text&type=phone_number&app_absent=0" 
+     class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+         alt="WhatsApp Chat" class="whatsapp-icon">
+  </a>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3 mt-5">
+  <footer>
     <p class="mb-0">© 2025 Thermotechnik Systeme | All Rights Reserved</p>
   </footer>
 
+  <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    const nextBtn = document.getElementById('next');
+    const prevBtn = document.getElementById('prev');
 
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev');
+        if (i === index) slide.classList.add('active');
+        if (i === (index - 1 + slides.length) % slides.length) slide.classList.add('prev');
+      });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    });
+
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 6000);
+  </script>
 </body>
 </html>
