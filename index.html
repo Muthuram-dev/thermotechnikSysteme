@@ -195,6 +195,40 @@
       text-align: center;
       font-size: 0.95rem;
     }
+    /* Full-page Services Section */
+.services-section {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #101010, #1c1c1c);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+}
+
+.service-box {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s ease;
+  height: 100%;
+}
+
+.service-box:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08);
+}
+
+.services-section h2 {
+  letter-spacing: 1px;
+}
+
+.services-section p {
+  line-height: 1.7;
+  font-size: 1.15rem;
+}
+
 
     @media (max-width: 992px) {
       .slide {
@@ -278,6 +312,53 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
          alt="WhatsApp Chat" class="whatsapp-icon">
   </a>
+<!-- Services Section -->
+<!-- Full-Page Services Section -->
+<section class="services-section d-flex align-items-center">
+  <div class="container text-center text-white">
+    <h2 class="fw-bold display-5 mb-2">Level With Great Services That</h2>
+    <h2 class="fw-bold display-5 mb-4 text-warning">We Are Providing</h2>
+    <hr class="mx-auto mb-5" style="width: 100px; border: 3px solid #ffcc00;">
+    
+    <div class="row g-5">
+      <!-- Service 1 -->
+      <div class="col-md-4">
+        <div class="service-box p-4">
+          <h4 class="fw-bold mb-3">Design and Product Excellence</h4>
+          <p class="lead">
+            Thermotechnik Systeme’s expert draftsmen and AutoCAD professionals design
+            custom burners for unique requirements and diverse industrial applications.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="col-md-4">
+        <div class="service-box p-4">
+          <h4 class="fw-bold mb-3">24x7 Support Service</h4>
+          <p class="lead">
+            We offer a 24/7 centralized service network aiding dealers and offices to
+            route service calls efficiently with minimal turnaround time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="col-md-4">
+        <div class="service-box p-4">
+          <h4 class="fw-bold mb-3">Guaranteed Quality Assurance</h4>
+          <p class="lead">
+            Our independent Quality Control and Assurance team ensures flawless
+            solutions and services, preventing errors at every level for 100% accuracy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
   <!-- Footer -->
   <footer>
